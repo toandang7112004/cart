@@ -8,13 +8,16 @@
             <th style="width:10%">Price</th>
             <th style="width:8%">Quantity</th>
             <th style="width:22%" class="text-center">Subtotal</th>
-            <th style="width:10%"></th>
+            <th style="width:10%">action</th>
         </tr>
         </thead>
         <tbody>
         <?php $total = 0 ?>
         @if(session('cart'))
-            @foreach(session('cart') as $id => $details)
+        @foreach(session('cart') as $id => $details)
+        {{-- @php
+            dd(session('cart'))
+        @endphp --}}
                 <?php $total += $details['price'] * $details['quantity'] ?>
                 <tr>
                     <td data-th="Product">
@@ -29,7 +32,7 @@
                     <td data-th="Quantity">
                         <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
                     </td>
-                    <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+                    <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }}$</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
                         <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>

@@ -25,6 +25,9 @@
                         </div>
                         <?php $total = 0 ?>
                         @foreach((array) session('cart') as $id => $details)
+                        {{-- @php
+                            dd((array) session('cart') )
+                        @endphp --}}
                             <?php $total += $details['price'] * $details['quantity'] ?>
                         @endforeach
                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
